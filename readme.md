@@ -1,4 +1,3 @@
-✅ I’ll be natural, detailed, and professional — **because this diagram + README is your MVP presentation to them.**
 
 ## README.md
 
