@@ -8,7 +8,8 @@
 ## 📈 Architecture Overview
 
 This project outlines a scalable, AWS-native data platform architecture for Neptune's IoT water meters, ensuring scalable, efficient, and real-time analytics capabilities.
-![chrome_W0ndO0UUIJ](https://github.com/user-attachments/assets/07809f36-a509-4850-ac2e-1eadb5110481)
+![chrome_U7RORlr9Br](https://github.com/user-attachments/assets/ecfaaa94-3eb9-437e-8746-384935a1da2a)
+
 
 ---
 
