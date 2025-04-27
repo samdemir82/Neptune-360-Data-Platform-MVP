@@ -26,7 +26,7 @@ This project outlines a scalable, AWS-native data platform architecture for Nept
 | | **Redshift (RAW)** | Store raw copied records from cleaned S3 |
 | | **Amazon CloudWatch** | Monitor Glue job executions, Lambda errors, timeout alerts, centralized logs |
 
-| | **Redshift Fact Tables** | Aggregated reporting layer for visualization |
+| **Redshift Fact Tables** | Aggregated reporting layer for visualization |
 | | **DynamoDB** | Fast lookup for live meter alerts/status |
 | | **Aurora** | Store device metadata, onboarding, customer records |
 | **Analytics / Visualization** | **Athena** | Serverless, ad-hoc querying over S3 |
