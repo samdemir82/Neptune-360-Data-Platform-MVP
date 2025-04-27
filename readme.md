@@ -24,6 +24,8 @@ This project outlines a scalable, AWS-native data platform architecture for Nept
 | | **Glue Jobs** | Transform JSON → clean partitioned Parquet |
 | | **Glue Workflows** | Manage & orchestrate ETL job dependencies |
 | | **Redshift (RAW)** | Store raw copied records from cleaned S3 |
+| | **Amazon CloudWatch** | Monitor Glue job executions, Lambda errors, timeout alerts, centralized logs |
+
 | | **Redshift Fact Tables** | Aggregated reporting layer for visualization |
 | | **DynamoDB** | Fast lookup for live meter alerts/status |
 | | **Aurora** | Store device metadata, onboarding, customer records |
@@ -62,11 +64,12 @@ This project outlines a scalable, AWS-native data platform architecture for Nept
 
 | Phase | Upgrade Idea | Benefit |
 |-------|--------------|---------|
-| 1 | Integrate **dbt (Data Build Tool)** into Redshift | Declarative, version-controlled transformations inside Redshift |
-| 2 | Introduce **Snowflake** (Optional) | Scale beyond Redshift if petabyte scale needed |
-| 3 | **Glue Streaming ETL** (Future) | Handle sub-minute real-time ingestion |
-| 4 | Enable **Auto-partitioning** and **partition projection** in Athena | Even faster ad-hoc queries at S3 |
-| 5 | Add **S3 Object Locking** for raw zone | Compliance + data immutability |
+| 1 | Integrate **dbt (Data Build Tool)** into Redshift | Declarative, version-controlled SQL transformations, better modular ETL management |
+| 2 | Add dbt Data Quality Tests (e.g., non-null, uniqueness, foreign key integrity) | Ensure trust in Redshift Fact Tables with live validation |
+| 3 | Create dbt Docs and auto-generate lineage graphs | Increase transparency of transformations for data engineers and analysts |
+| 4 | Integrate CloudWatch dashboards | Real-time Glue job health, Lambda error rates, Redshift query performance monitoring |
+| 5 | Build a live health dashboard (via QuickSight or Custom App) | Share live data pipeline health metrics (data lag, errors, missing partitions) with stakeholders |
+| 6 | (Future) Evaluate Snowflake or Redshift RA3 scaling | Handle petabyte-scale growth beyond Redshift if needed |
 
 ---
 
