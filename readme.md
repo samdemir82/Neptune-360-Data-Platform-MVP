@@ -1,7 +1,7 @@
 
 ## README.md
 
-# Neptune 360 – Data Platform MVP
+# IoT Telemetry Data Platform 
 
 ---
 
