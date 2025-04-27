@@ -7,7 +7,8 @@
 
 ## 📈 Architecture Overview
 
-This project outlines a scalable, AWS-native data platform architecture for Neptune's IoT water meters, ensuring scalable, efficient, and real-time analytics capabilities.
+This project outlines a scalable, AWS-native data platform architecture designed for IoT telemetry ingestion, storage, processing, and real-time analytics.
+It ensures efficient handling of high-frequency meter or sensor data, enabling robust data-driven decision-making and scalable growth for future analytics needs.
 ![chrome_U7RORlr9Br](https://github.com/user-attachments/assets/ecfaaa94-3eb9-437e-8746-384935a1da2a)
 
 
@@ -25,8 +26,7 @@ This project outlines a scalable, AWS-native data platform architecture for Nept
 | | **Glue Workflows** | Manage & orchestrate ETL job dependencies |
 | | **Redshift (RAW)** | Store raw copied records from cleaned S3 |
 | | **Amazon CloudWatch** | Monitor Glue job executions, Lambda errors, timeout alerts, centralized logs |
-
-| **Redshift Fact Tables** | Aggregated reporting layer for visualization |
+| | **Redshift Fact Tables** | Aggregated reporting layer for visualization | 
 | | **DynamoDB** | Fast lookup for live meter alerts/status |
 | | **Aurora** | Store device metadata, onboarding, customer records |
 | **Analytics / Visualization** | **Athena** | Serverless, ad-hoc querying over S3 |
