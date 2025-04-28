@@ -53,10 +53,22 @@ It ensures efficient handling of high-frequency meter or sensor data, enabling r
 
 ## 🧱 Why This Stack?
 
-- **Serverless-first**: (Athena, Firehose, Glue, DynamoDB)
-- **Scalable storage**: S3 grows as needed
-- **Query Optimization**: Parquet files reduce Athena/Redshift costs
-- **Separate OLTP (Aurora/DynamoDB) from OLAP (Redshift/Athena)**: prevents overloading analytics
+- **Serverless-first:** (Athena, Firehose, Glue, DynamoDB) → No need to manage servers, auto-scaling, pay-as-you-go
+- **Scalable storage:** S3 grows endlessly and cheaply → raw, clean, historical data without capacity issues
+- **Query Optimization:** Storing data in Parquet format (columnar) drastically reduces read costs and improves performance for both Athena and Redshift Spectrum.
+- **Separate OLTP (Aurora/DynamoDB) from OLAP (Redshift/Athena):** 
+  - **Aurora/DynamoDB (OLTP):** Handles real-time operations, metadata, transactions (fast reads/writes)
+  - **Redshift/Athena (OLAP):** Handles complex analytical queries and aggregations
+- **CloudWatch Monitoring:**  Enables proactive alerting → fix failures fast → better SLA for the business.
+   - Lambda errors/timeouts (Alert when job fails)
+   - Glue job duration, failure alerts (Glue job duration (longer = more expensive), Glue job DPU usage (more DPUs = higher cost), Number of Glue job runs (batch frequency = cost scale))
+   - Redshift query performance alarms (Query duration, WLM queue wait time, Query success vs. timeout/failure rate)
+- **Custom Full-Stack App for Dashboards:** Faster, dynamic, real-time dashboards customized to business needs.
+   - Custom metrics and layouts based on user role, device, customer
+   - Live event tracking (like leaks, outages) updating instantly
+   - Custom security: Tight control over data access by tenant/customer
+   - No licensing cost growth (QuickSight, PowerBI, Tableau per-user licenses can become expensive as users grow)
+   - More flexible UX/UI than QuickSight’s limited dashboarding options
 
 ---
 
@@ -64,9 +76,9 @@ It ensures efficient handling of high-frequency meter or sensor data, enabling r
 
 | Phase | Upgrade Idea | Benefit |
 |-------|--------------|---------|
-| 1 | Integrate **dbt (Data Build Tool)** into Redshift | Declarative, version-controlled SQL transformations, better modular ETL management |
+| 1 | Integrate **DBT (Data Build Tool)** into Redshift | Declarative, version-controlled SQL transformations, better modular ETL management |
 | 2 | Add dbt Data Quality Tests (e.g., non-null, uniqueness, foreign key integrity) | Ensure trust in Redshift Fact Tables with live validation |
-| 3 | Create dbt Docs and auto-generate lineage graphs | Increase transparency of transformations for data engineers and analysts |
+| 3 | Create DBT Docs and auto-generate lineage graphs | Increase transparency of transformations for data engineers and analysts |
 | 4 | Integrate CloudWatch dashboards | Real-time Glue job health, Lambda error rates, Redshift query performance monitoring |
 | 5 | Build a live health dashboard (via QuickSight or Custom App) | Share live data pipeline health metrics (data lag, errors, missing partitions) with stakeholders |
 | 6 | (Future) Evaluate Snowflake or Redshift RA3 scaling | Handle petabyte-scale growth beyond Redshift if needed |
