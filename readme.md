@@ -76,11 +76,11 @@ It ensures efficient handling of high-frequency meter or sensor data, enabling r
 
 | Phase | Upgrade Idea | Benefit |
 |-------|--------------|---------|
-| 1 | Integrate **DBT (Data Build Tool)** into Redshift | Declarative, version-controlled SQL transformations, better modular ETL management |
-| 2 | Add dbt Data Quality Tests (e.g., non-null, uniqueness, foreign key integrity) | Ensure trust in Redshift Fact Tables with live validation |
-| 3 | Create DBT Docs and auto-generate lineage graphs | Increase transparency of transformations for data engineers and analysts |
-| 4 | Integrate CloudWatch dashboards | Real-time Glue job health, Lambda error rates, Redshift query performance monitoring |
-| 5 | Build a live health dashboard (via QuickSight or Custom App) | Share live data pipeline health metrics (data lag, errors, missing partitions) with stakeholders |
+| 1 | Integrate CloudWatch dashboards | Real-time Glue job health, Lambda error rates, Redshift query performance monitoring |
+| 2 | Build a live health dashboard (via QuickSight or Custom App) | Share live data pipeline health metrics (data lag, errors, missing partitions) with stakeholders |
+| 3 | Integrate **DBT (Data Build Tool)** into Redshift | Declarative, version-controlled SQL transformations, better modular ETL management |
+| 4 | Add dbt Data Quality Tests (e.g., non-null, uniqueness, foreign key integrity) | Ensure trust in Redshift Fact Tables with live validation |
+| 5 | Create DBT Docs and auto-generate lineage graphs | Increase transparency of transformations for data engineers and analysts |
 | 6 | (Future) Evaluate Snowflake or Redshift RA3 scaling | Handle petabyte-scale growth beyond Redshift if needed |
 
 ---
